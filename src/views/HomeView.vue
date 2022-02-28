@@ -1,18 +1,34 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <div class="box">
+      🔔{{billBoard.content}}
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import {getBillBoard} from "@/api/billboard";
 
 export default {
   name: 'HomeView',
-  components: {
-    HelloWorld
+  data(){
+    return {
+      billBoard:{
+        content:''
+      }
+    }
+  },
+  created() {
+    this.fetchBillBoard()
+  },
+  methods:{
+    async fetchBillBoard(){
+      getBillBoard().then((value)=>{
+        const { data } = value
+        this.billBoard = data
+      })
+    }
   }
+
 }
 </script>
