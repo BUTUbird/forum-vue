@@ -9,11 +9,19 @@ const routes = [
     path: '/',
     name: 'home',
     component: () => import('@/views/HomeView'),
+
   },
   {
     path: '/register',
     name: 'register',
     component: () => import('@/views/auth/Register'),
+    meta: { title: "注册" },
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/auth/Login'),
+    meta: { title: "登录" },
   },
   {
     path: '/404',

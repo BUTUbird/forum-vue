@@ -7,3 +7,11 @@ export function userRegister(userDTO){
         data:userDTO
     })
 }
+// 前台用户登录
+export function login(data) {
+    return request({
+        url: '/user/login',
+        method: 'post',
+        data
+    })
+}

@@ -1,6 +1,6 @@
 <template>
   <div class="columns py-6">
-    <div class="colum is-half is-offset-one-quarter">
+    <div class="column is-half is-offset-one-quarter">
       <el-card shadow="never">
         <div slot="header" class="has-text-centered has-text-weight-bold">
           新用户入驻
