@@ -14,13 +14,17 @@
   </div>
 </template>
 
-<style>
-
-</style>
 <script>
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 export default {
-  components: {Header,Footer}
-}
+  name: "App",
+  components: { Header, Footer },
+};
 </script>
+
+<style scoped>
+.container {
+  min-height: 500px;
+}
+</style>
