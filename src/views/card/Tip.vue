@@ -17,6 +17,7 @@
 <script>
 
 import {getTodayTip} from "@/api/tip";
+import {getVerify} from "@/api/auth/auth";
 
 export default {
   name: "Tip",
@@ -37,7 +38,7 @@ export default {
         const {data} = response
         this.tip = data
       })
-    }
+    },
   }
 }
 </script>

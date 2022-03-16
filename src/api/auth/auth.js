@@ -30,3 +30,11 @@ export function logout() {
         method: 'get',
     })
 }
+//验证码
+export function getVerify(time) {
+    return request({
+        url: '/user/verify/?time='+time,
+        method: 'get',
+        data:time
+    })
+}

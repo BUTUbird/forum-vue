@@ -27,6 +27,17 @@
               ></el-input>
             </el-form-item>
 
+            <el-form-item label="验证码" prop="code">
+              <el-col :span="12">
+              <el-input v-model="ruleForm.code"
+                        autocomplete="off"
+              ></el-input>
+              </el-col>
+              <el-col :span="12">
+                <img width="160px" src="http://localhost:8000/user/verify" Onclick="this.src='http://localhost:8000/user/verify?d='+new Date()*1"/>
+              </el-col>
+            </el-form-item>
+
             <el-form-item label="记住" prop="delivery">
               <el-switch v-model="ruleForm.rememberMe"></el-switch>
             </el-form-item>
@@ -45,15 +56,19 @@
 </template>
 
 <script>
+import {getVerify} from "@/api/auth/auth";
+
 export default {
   name: "Login",
   data() {
     return {
+      code_url:'',
       redirect: undefined,
       loading: false,
       ruleForm: {
         name: "",
         pass: "",
+        code: "",
         rememberMe: true,
       },
       rules: {
@@ -77,6 +92,9 @@ export default {
         ],
       },
     };
+  },
+  created() {
+    this.getVerifyCode()
   },
   methods:{
     submitForm(formName) {

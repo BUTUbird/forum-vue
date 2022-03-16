@@ -39,6 +39,17 @@
               <el-input v-model="ruleForm.email" autocomplete="off"/>
             </el-form-item>
 
+            <el-form-item label="验证码" prop="code">
+              <el-col :span="12">
+                <el-input v-model="ruleForm.code"
+                          autocomplete="off"
+                ></el-input>
+              </el-col>
+              <el-col :span="12">
+                <img width="160px" src="http://localhost:8000/user/verify" Onclick="this.src='http://localhost:8000/user/verify?d='+new Date()*1"/>
+              </el-col>
+            </el-form-item>
+
             <el-form-item>
               <el-button
                   type="primary"
@@ -76,6 +87,7 @@ export default {
         pass: '',
         checkPass: '',
         email: '',
+        code:'',
       },
       rules: {
         name: [
