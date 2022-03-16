@@ -17,7 +17,7 @@
 <script>
 import {getBillBoard} from "@/api/billboard";
 import CarBar from "@/views/card/CarBar";
-import PostList from "@/views/post/index"
+import PostList from "@/views/post/Index"
 
 export default {
   name: 'HomeView',
