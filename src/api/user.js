@@ -26,5 +26,31 @@ export function update(user) {
     data: user
   })
 }
-
+export function getUser(page, size) {
+  return request({
+    url: '/user/getAll',
+    method: 'get',
+    params: {
+      pageNo: page,
+      size: size
+    }
+  })
+}
+export function deleteOne(id) {
+  return request({
+    url: `/user/deleteOne/${id}`,
+    method: 'delete',
+  })
+}
+export function searchOne(page,size,key) {
+  return request({
+    url: '/user/searchOne',
+    method: 'get',
+    params: {
+      pageNo: page,
+      size: size,
+      key: key
+    }
+  })
+}
 

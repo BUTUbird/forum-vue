@@ -18,3 +18,21 @@ export function pushComment(data) {
   })
 }
 
+export function getComment(page, size) {
+  return request({
+    url: '/comment/getAll',
+    method: 'get',
+    params: {
+      pageNo: page,
+      size: size
+    }
+  })
+}
+export function deleteOne(id) {
+  return request({
+    url: `/comment/deleteOne/${id}`,
+    method: 'delete',
+  })
+}
+
+

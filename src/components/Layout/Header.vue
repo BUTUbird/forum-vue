@@ -91,6 +91,16 @@
           >
             🧘 个人中心
           </b-navbar-item>
+          <hr class="dropdown-divider"
+              v-show="user.roleId === 1"
+          >
+          <b-navbar-item
+              v-show="user.roleId === 1"
+              tag="router-link"
+              :to="{ path: `/admin` }"
+          >
+            ⚙ 后台管理
+          </b-navbar-item>
           <hr class="dropdown-divider">
           <b-navbar-item
               tag="router-link"

@@ -86,6 +86,75 @@ const routes = [
     redirect: "/404",
     hidden: true,
   },
+    //后台管理主页
+  {
+    path: "/admin",
+    name: "index",
+    component: () => import ('@/views/admin/index'),
+    children:[
+      {
+        path:"echar",
+        component: () => import ('@/views/admin/echar'),
+        meta: {title: '热门标签文章数'}
+      },
+      {
+        path:"billboard",
+        component: () => import ('@/views/admin/billboard'),
+        meta: {title: '公告管理'}
+      },
+      {
+        path:"addBillboard",
+        component: () => import ('@/views/admin/addBillboard'),
+        meta: {title: '添加公告'}
+      },
+      {
+        path:"tip",
+        component: () => import ('@/views/admin/tip'),
+        meta: {title: '每日一句管理'}
+      },
+      {
+        path:"addtip",
+        component: () => import ('@/views/admin/addtip'),
+        meta: {title: '添加每日一句'}
+      },
+      {
+        path:"promotion",
+        component: () => import ('@/views/admin/promotion'),
+        meta: {title: '广告商管理'}
+      },
+      {
+        path:"addpromotion",
+        component: () => import ('@/views/admin/addpromotion'),
+        meta: {title: '添加广告商'}
+      },
+      {
+        path:"user",
+        component: () => import ('@/views/admin/user'),
+        meta: {title: '用户列表'}
+      },
+      {
+        path:"tag",
+        component: () => import ('@/views/admin/tag'),
+        meta: {title: '标签列表'}
+      },
+      {
+        path:"comment",
+        component: () => import ('@/views/admin/comment'),
+        meta: {title: '评论列表'}
+      },
+      {
+        path:"post",
+        component: () => import ('@/views/admin/post'),
+        meta: {title: '帖子列表'}
+      },
+      {
+        path:"detail/:id",
+        component: () => import ('@/views/admin/detail'),
+        meta: {title: '帖子详情'}
+      },
+    ],
+    meta: {title: '首页'}
+  },
 ];
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {

@@ -16,9 +16,6 @@ const mutations = {
     SET_USER_STATE: (state, user) => {
         state.user = user
     },
-    SET_ROLE_STATE:(state,role)=>{
-        state.role = role
-    }
 }
 
 const actions = {

@@ -52,3 +52,37 @@ export function deleteTopic(id) {
         method: 'delete'
     })
 }
+export function getPost(page, size) {
+    return request({
+        url: `/post/getAll`,
+        method: 'get',
+        params: {
+            pageNo: page,
+            size: size
+        }
+    })
+}
+export function deleteOne(id) {
+    return request({
+        url: `/post/deleteOne/${id}`,
+        method: 'delete',
+    })
+}
+export function detailOne(id) {
+    return request({
+        url: `/post/detailOne/${id}`,
+        method: 'get',
+    })
+}
+
+export function searchOne(page,size,keyword) {
+    return request({
+        url: '/post/searchOne',
+        method: 'get',
+        params: {
+            pageNo: page,
+            size: size,
+            keyword: keyword
+        }
+    })
+}
