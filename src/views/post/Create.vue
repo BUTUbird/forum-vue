@@ -82,6 +82,7 @@ export default {
     }
   },
   mounted() {
+    const imageUrl = "{{url_for('.upload')}}";
     this.contentEditor = new Vditor('vditor', {
       height: 500,
       placeholder: '此处为话题内容……',
@@ -105,7 +106,7 @@ export default {
       cache: {
         enable: false
       },
-      mode: 'sv'
+      mode: 'sv',
     })
   },
   methods: {

@@ -7,7 +7,7 @@ const state = {
     name: '',
     avatar: '',
     introduction: '',
-    roles: []
+    role: ''
 }
 const mutations = {
     SET_TOKEN_STATE: (state, token) => {
@@ -15,6 +15,9 @@ const mutations = {
     },
     SET_USER_STATE: (state, user) => {
         state.user = user
+    },
+    SET_ROLE_STATE:(state,role)=>{
+        state.role = role
     }
 }
 

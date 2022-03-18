@@ -8,6 +8,7 @@ import {getToken} from "@/utils/auth"; // progress bar style
 
 NProgress.configure({showSpinner: false}) // NProgress Configuration
 
+//导航守卫
 router.beforeEach(async (to, from, next) => {
     // start progress bar
     NProgress.start()
