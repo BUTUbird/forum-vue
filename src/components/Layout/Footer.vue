@@ -39,7 +39,7 @@ export default {
   },
   data() {
     return {
-      title: "© " + new Date().getFullYear() + ' 豆约翰',
+      title: "© " + new Date().getFullYear() + ' BUTUbird',
       author: 'BUTUbird',
     };
   },

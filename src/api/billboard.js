@@ -40,3 +40,10 @@ export function insertOne(data) {
         method: 'post',
     })
 }
+
+export function getCount(){
+    return request({
+        url:'/billboard/count',
+        method: 'get',
+    })
+}
