@@ -25,9 +25,21 @@
               </el-form>
             </el-tab-pane>
             <el-tab-pane label="头像" name="second">
-              <figure class="image is-48x48">
-                <img :src="`https://cn.gravatar.com/avatar/${this.user.id}?s=164&d=monsterid`">
-              </figure>
+<!--              <figure class="image is-48x48">-->
+<!--                <img :src="user.avatar">-->
+<!--              </figure>-->
+              <el-upload
+                  class="avatar-uploader"
+                  :action="uploadURL"
+                  :headers="headers"
+                  :show-file-list="false"
+                  :on-success="handleAvatarSuccess"
+                  :before-upload="beforeAvatarUpload">
+                <img v-if="user.avatar" :src="user.avatar" class="avatar"></img>
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                <div slot="tip" class="el-upload__tip">点击上传头像，只能上传jpg/png文件，且不超过1mb</div>
+              </el-upload>
+
             </el-tab-pane>
             <el-tab-pane label="电子邮箱" name="third">
               <el-form ref="dynamicValidateForm" :model="user" label-width="100px" class="demo-dynamic">
@@ -69,11 +81,15 @@
 
 <script>
 import {getInfo, update} from '@/api/user'
+import {upload} from "@/api/file";
+import {getToken} from "@/utils/auth";
 
 export default {
   name: 'Setting',
   data() {
     return {
+      headers:{},
+      uploadURL:'',
       activeName: 'first',
       labelPosition: 'right',
       user: {
@@ -88,7 +104,10 @@ export default {
     }
   },
   created() {
+    this.headers={Authorization :  'Bearer ' + getToken()}
     this.fetchInfo()
+    this.uploadURL = process.env.VUE_APP_SERVER_URL+'/user/uploadImg/'
+
   },
   methods: {
     fetchInfo() {
@@ -110,6 +129,39 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields()
+    },
+
+    //事件处理器
+    handleAvatarSuccess(res, file) {//上传头像
+      if(res.code == 200){
+        this.user.avatar = res.data;
+        this.user.head_start = 1;
+      }else{
+        this.$message.error('上传图片失败');
+      }
+
+    },
+    beforeAvatarUpload(file) {//判断头像大小
+      if (file == null){
+        console.log("文件为空")
+      }
+      console.log("文件不为空"+file.size)
+      const isJPG = file.type == 'image/png'||file.type=='image/jpg'||file.type=='image/jpeg';
+      const isLt2M = file.size / 1024 / 1024 < 1;
+      // console.log(file);
+      if (!isJPG) {
+        this.$message.error('上传头像图片只能是 JPG/JPEG/PNG 格式!');
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 1MB!');
+      }
+      console.log("文件校验通过")
+      return isJPG && isLt2M;
+    },
+    upload(file){
+      upload(file).then(res=>{
+        this.user.avatar = res.data;
+      })
     }
   }
 }
