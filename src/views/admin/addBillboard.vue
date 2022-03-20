@@ -50,7 +50,7 @@ export default {
               });
               setTimeout(() => {
                 this.loading = false;
-                this.$router.push({ path: this.redirect || "/first/billboard" });
+                this.$router.push({ path: this.redirect || "/admin/billboard" });
               }, 0.1 * 1000);
             })
   }

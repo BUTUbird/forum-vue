@@ -72,7 +72,7 @@ export default {
               });
               setTimeout(() => {
                 this.loading = false;
-                this.$router.push({ path: this.redirect || "/first/promotion" });
+                this.$router.push({ path: this.redirect || "/admin/promotion" });
               }, 0.1 * 1000);
             })
   }

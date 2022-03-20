@@ -13,7 +13,9 @@ import './assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css'
 import format from 'date-fns/format'
 import '@/permission'
 import relativeTime from 'dayjs/plugin/relativeTime';
-
+//swiper
+import VueAwesomeSwiper from "vue-awesome-swiper";
+Vue.use(VueAwesomeSwiper)
 // 国际化
 import 'dayjs/locale/zh-cn'
 const dayjs = require('dayjs');

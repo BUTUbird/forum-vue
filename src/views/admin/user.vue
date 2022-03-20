@@ -136,7 +136,7 @@ export default {
         alert(message)
         if (code === 200) {
           setTimeout(() => {
-            this.$router.push({ path: '/first/user' })
+            this.$router.push({ path: '/admin/user' })
           }, 500)
         }
         this.reload()

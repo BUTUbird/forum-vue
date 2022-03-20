@@ -6,8 +6,9 @@
       </div>
       <div class="has-text-centered">
         <p class="is-size-5 mb-5">
-          <router-link :to="{ path: `/member/${user.username}/home` }">
-            {{ user.alias }} <span class="is-size-7 has-text-grey">{{ '@' + user.username }}</span>
+          <router-link :to="{ path: `/member/${user.username}/home` }" class="_b_div">
+            <img :src="user.avatar" class="_b_img">
+            {{ user.alias }} <span class="is-size-7 has-text-grey" >{{ '@' + user.username }}</span>
           </router-link>
         </p>
         <div class="columns is-mobile">
@@ -99,5 +100,18 @@ export default {
 </script>
 
 <style scoped>
+._b_div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+}
+._b_img{
+width: 125px;
+  height: 125px;
+  border-radius: 63px;
+}
 
 </style>

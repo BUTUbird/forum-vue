@@ -75,7 +75,7 @@ export default {
         alert(message)
         if (code === 200) {
           setTimeout(() => {
-            this.$router.push({ path: '/first/tip' })
+            this.$router.push({ path: '/admin/tip' })
           }, 500)
         }
         this.reload()

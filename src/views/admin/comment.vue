@@ -89,7 +89,7 @@ export default {
         alert(message)
         if (code === 200) {
           setTimeout(() => {
-            this.$router.push({ path: '/first/comment' })
+            this.$router.push({ path: '/admin/comment' })
           }, 500)
         }
         this.reload()

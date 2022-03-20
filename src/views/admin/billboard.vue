@@ -84,7 +84,7 @@ export default {
         alert(message)
         if (code === 200) {
           setTimeout(() => {
-            this.$router.push({ path: '/first/billboard' })
+            this.$router.push({ path: '/admin/billboard' })
           }, 500)
         }
         this.reload()
@@ -96,7 +96,7 @@ export default {
         alert(message)
         if (code === 200) {
           setTimeout(() => {
-            this.$router.push({ path: '/first/billboard' })
+            this.$router.push({ path: '/admin/billboard' })
           }, 500)
         }
        })
@@ -107,7 +107,7 @@ export default {
         alert(message)
         if (code === 200) {
           setTimeout(() => {
-            this.$router.push({ path: '/first/billboard' })
+            this.$router.push({ path: '/admin/billboard' })
           }, 500)
         }
        })

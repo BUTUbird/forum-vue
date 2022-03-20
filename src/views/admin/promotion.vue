@@ -82,7 +82,7 @@ export default {
         alert(message)
         if (code === 200) {
           setTimeout(() => {
-            this.$router.push({ path: '/first/promotion' })
+            this.$router.push({ path: '/admin/promotion' })
           }, 500)
         }
         this.reload()

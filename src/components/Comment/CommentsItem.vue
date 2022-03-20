@@ -1,7 +1,7 @@
 <template>
   <article class="media">
     <figure class="media-left image is-48x48">
-      <img :src="`https://cn.gravatar.com/avatar/${comment.userId}?s=164&d=monsterid`">
+      <img :src="user.avatar">
     </figure>
     <div class="media-content">
       <div class="content">
@@ -18,6 +18,8 @@
 
 <script>
 
+import {mapGetters} from "vuex";
+
 export default {
   name: 'LvCommentsItem',
   props: {
@@ -25,7 +27,12 @@ export default {
       type: Object,
       required: true
     }
-  }
+  },
+  computed: {
+    ...mapGetters([
+      'token','user'
+    ])
+  },
 }
 </script>
 

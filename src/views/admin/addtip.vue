@@ -62,7 +62,7 @@ export default {
               });
               setTimeout(() => {
                 this.loading = false;
-                this.$router.push({ path: this.redirect || "/first/tip" });
+                this.$router.push({ path: this.redirect || "/admin/tip" });
               }, 0.1 * 1000);
             })
   }
