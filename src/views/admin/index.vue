@@ -24,6 +24,11 @@
             <router-link :to="{path:'/admin/addBillboard'}"><el-menu-item >添加公告</el-menu-item></router-link>
           </el-submenu>
           <el-submenu index="3">
+            <template slot="title"><i class="el-icon-message-solid"></i>轮播图管理</template>
+            <router-link :to="{path:'/admin/carousel'}"><el-menu-item >轮播图列表</el-menu-item></router-link>
+            <router-link :to="{path:'/admin/addCarousel'}"><el-menu-item >添加轮播图</el-menu-item></router-link>
+          </el-submenu>
+          <el-submenu index="4">
             <template slot="title"><i class="el-icon-link"></i>外部资源</template>
 <!--            <el-menu-item-group>-->
 <!--              <template slot="title">每日一句</template>-->
@@ -36,16 +41,16 @@
               <router-link :to="{path:'/admin/addpromotion'}"><el-menu-item>添加广告商</el-menu-item></router-link>
             </el-menu-item-group>
           </el-submenu>
-          <el-submenu index="4">
+          <el-submenu index="5">
             <template slot="title"><i class="el-icon-s-custom"></i>用户管理</template>
             <router-link :to="{path:'/admin/user'}"><el-menu-item >用户列表</el-menu-item></router-link>
           </el-submenu>
-          <el-submenu index="5">
+          <el-submenu index="6">
             <template slot="title"><i class="el-icon-menu"></i>帖子管理</template>
             <router-link :to="{path:'/admin/post'}"><el-menu-item >帖子列表</el-menu-item></router-link>
 <!--            <router-link :to="{path:'/admin/comment'}"><el-menu-item >评论列表</el-menu-item></router-link>-->
           </el-submenu>
-          <el-submenu index="6">
+          <el-submenu index="7">
             <template slot="title"><i class="el-icon-attract"></i>标签管理</template>
             <router-link :to="{path:'/admin/tag'}"><el-menu-item >标签列表</el-menu-item></router-link>
           </el-submenu>

@@ -22,6 +22,7 @@
     <el-table-column label="操作">
       <template slot-scope="scope">
         <el-button
+            v-show="scope.row.shows === true"
           size="mini"
           type="warning"
           @click="handledisable(scope.row.id)">禁用</el-button>
@@ -32,6 +33,7 @@
           <el-button
           size="mini"
           type="success"
+          v-show="scope.row.shows === false"
           @click="handleable(scope.row.id)">启用</el-button>
       </template>
     </el-table-column>
@@ -99,6 +101,7 @@ export default {
             this.$router.push({ path: '/admin/billboard' })
           }, 500)
         }
+        this.reload()
        })
    },
    handleable(id){
@@ -110,6 +113,7 @@ export default {
             this.$router.push({ path: '/admin/billboard' })
           }, 500)
         }
+         this.reload()
        })
    },
   }

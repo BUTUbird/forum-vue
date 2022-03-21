@@ -102,10 +102,21 @@ const routes = [
         component: () => import ('@/views/admin/billboard'),
         meta: {title: '公告管理'}
       },
+
       {
         path:"addBillboard",
         component: () => import ('@/views/admin/addBillboard'),
         meta: {title: '添加公告'}
+      },
+      {
+        path:"carousel",
+        component: () => import ('@/views/admin/carousel'),
+        meta: {title: '轮播图管理'}
+      },
+      {
+        path:"addCarousel",
+        component: () => import ('@/views/admin/addCarousel'),
+        meta: {title: '添加轮播图'}
       },
       {
         path:"tip",
