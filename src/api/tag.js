@@ -10,12 +10,7 @@ export function getTopicsByTag(paramMap) {
     }
   })
 }
-export function getTagechar() {
-  return request({
-    url: '/tag/echar',
-    method: 'get'
-  })
-}
+
 
 export function getTag(page, size) {
   return request({

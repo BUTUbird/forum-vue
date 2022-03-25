@@ -89,7 +89,7 @@ import Vditor from 'vditor'
 import 'vditor/dist/index.css'
 
 export default {
-  name: 'TopicDetail',
+  name: 'PostDetail',
   components: { Author, Recommend, LvComments },
   computed: {
     ...mapGetters([

@@ -7,7 +7,7 @@
 
       <Promotion></Promotion>
 
-      <!--站点统计-->
+      站点统计
       <Count></Count>
     </section>
 
@@ -23,8 +23,10 @@ import Count from "@/views/card/Count";
 export default {
   name: "CarBar",
   components: {Promotion, LoginWelcome,Tip,Count},
-  data: {
-    return: {}
+  data() {
+    return {
+      return: {}
+    }
   },
   created() {
   },

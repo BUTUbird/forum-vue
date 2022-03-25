@@ -4,7 +4,7 @@
 
 <script>
 import echarts from 'echarts'
-import {getTagechar} from '@/api/tag'
+import {getTag} from '@/api/echarts'
 export default {
   name: "eCharts",
   data() {
@@ -18,7 +18,7 @@ export default {
   },
  methods: {
     init() {
-    getTagechar().then((response) => {
+    getTag().then((response) => {
           const { data } = response
       console.log(data)
            let myChart = echarts.init(document.getElementById("myChart"));

@@ -128,8 +128,8 @@ export default {
   name: 'Header',
   data() {
     return {
-      logoUrl: require('@/assets/logo.png'),
-      doubaoImg: require('@/assets/image/doubao.png'),
+      logoUrl: require('@/assets/image/BUTUbird.svg'),
+      doubaoImg: require('@/assets/image/BUTUbird.svg'),
       searchKey: '',
       darkMode: false
     }

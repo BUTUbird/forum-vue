@@ -1,6 +1,6 @@
 <template>
-  <el-carousel indicator-position="outside"  style="width:100%">
-    <el-carousel-item v-for="item in imgArray" :key="item">
+  <el-carousel indicator-position="outside"  style="width:100%; border-radius: 15px">
+    <el-carousel-item v-for="(item,key) in imgArray" :key="key">
       <img :src="item.idView" class="rightImg">
     </el-carousel-item>
   </el-carousel>
@@ -13,10 +13,10 @@ export default {
   data() {
     return {
       imgArray: [
-        {id:0,idView:require("@/assets/image/doubao.png")},
-        {id:1,idView:require("@/assets/image/doubao.png")},
-        {id:2,idView:require("@/assets/image/doubao.png")},
-        {id:3,idView:require("@/assets/image/doubao.png")}
+        {id:0,idView:require("@/assets/image/BUTUbird.svg")},
+        {id:1,idView:require("@/assets/image/BUTUbird.svg")},
+        {id:2,idView:require("@/assets/image/BUTUbird.svg")},
+        {id:3,idView:require("@/assets/image/BUTUbird.svg")}
       ]
     }
   },

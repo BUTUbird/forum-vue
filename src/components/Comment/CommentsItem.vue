@@ -1,7 +1,7 @@
 <template>
   <article class="media">
     <figure class="media-left image is-48x48">
-      <img :src="user.avatar">
+      <img :src="comment.avatar">
     </figure>
     <div class="media-content">
       <div class="content">

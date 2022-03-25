@@ -153,6 +153,7 @@ export default {
             return false
           }
           this.ruleForm.content = this.contentEditor.getValue()
+          console.log("+++++++++++++++"+this.contentEditor.getValue())
           post(this.ruleForm).then((response) => {
             const { data } = response
             setTimeout(() => {

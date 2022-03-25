@@ -9,7 +9,9 @@
           width="200">
         <template slot-scope="scope">
           <i class="el-icon-time"></i>
-          <span style="margin-left: 10px">{{ dayjs(scope.row.createTime).format('YYYY-MM-DD HH:mm:ss') }}</span>
+          <span style="margin-left: 10px">
+            {{ dayjs(scope.row.createTime).format('YYYY-MM-DD HH:mm:ss') }}
+          </span>
         </template>
       </el-table-column>
       <el-table-column
@@ -59,6 +61,8 @@
 <script>
 import { getCarouselList,deleteOne,disableOne, ableOne } from '@/api/carousel'
 import pagination from '@/components/Pagination'
+
+
 
 export default {
   name: 'carousel',
