@@ -2,14 +2,14 @@
   <div>
     <el-card shadow="never">
       <div slot="header" class="clearfix">
-        检索到 <code>{{ list.length }}</code>
+        搜索到 <code>{{ list.length }}</code>
         条关于 <code class="has-text-info">{{ query.keyword }}</code> 的记录
       </div>
       <div>
         <article v-for="(item, index) in list" :key="index" class="media">
           <div class="media-left">
             <figure class="image is-48x48">
-              <img :src="`https://cn.gravatar.com/avatar/${item.userId}?s=164&d=monsterid`"> 
+              <img :src="`https://cn.gravatar.com/avatar/${item.userId}?s=164&d=monsterid`">
             </figure>
           </div>
           <div class="media-content">

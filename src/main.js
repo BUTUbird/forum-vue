@@ -20,6 +20,17 @@ Vue.use(VueAwesomeSwiper)
 import 'dayjs/locale/zh-cn'
 const dayjs = require('dayjs');
 
+// import with ES6
+import VueHighlightJS from 'highlight.js';
+Vue.use(VueHighlightJS)
+Vue.directive('highlight', (el) => {
+  let blocks = el.querySelectorAll('pre code')
+  blocks.forEach((block) => {
+    VueHighlightJS.highlightBlock(block)
+  })
+})
+
+
 // 相对时间插件
 dayjs.extend(relativeTime)
 

@@ -24,6 +24,13 @@ const routes = [
     component: () => import("@/views/auth/Login"),
     meta: { title: "登录" },
   },
+  // 发送邮件
+  {
+    name: "mail",
+    path: "/mail",
+    component: () => import("@/views/auth/Mail"),
+    meta: { title: "发送邮件" },
+  },
   // 发布
   {
     name: "post-create",
@@ -73,7 +80,14 @@ const routes = [
     name: 'user-setting',
     path: '/member/:username/setting',
     component: () => import('@/views/user/Setting'),
-    meta: { title: '设置', requireAuth: true }
+    meta: { title: '设置' }
+  },
+  // 重置密码
+  {
+    name: 'resetPwd',
+    path: '/resetPwd/:token',
+    component: () => import('@/views/auth/ResetPwd'),
+    meta: { title: '重置密码', requireAuth: true }
   },
   {
     path: "/404",

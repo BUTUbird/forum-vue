@@ -40,6 +40,9 @@
 
             <el-form-item label="记住" prop="delivery">
               <el-switch v-model="ruleForm.rememberMe"></el-switch>
+              <router-link :to="{name:'mail'}">
+                <span class="is-size-6" style="float: right">忘记密码？</span>
+              </router-link>
             </el-form-item>
 
             <el-form-item>
@@ -56,7 +59,6 @@
 </template>
 
 <script>
-import {getVerify} from "@/api/auth/auth";
 
 export default {
   name: "Login",
@@ -94,7 +96,6 @@ export default {
     };
   },
   created() {
-    this.getVerifyCode()
   },
   methods:{
     submitForm(formName) {

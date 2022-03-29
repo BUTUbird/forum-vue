@@ -27,6 +27,7 @@ export function getTopic(id) {
         }
     })
 }
+
 // 获取详情页推荐
 export function getRecommendTopics(id) {
     return request({
@@ -35,6 +36,12 @@ export function getRecommendTopics(id) {
         params: {
             topicId: id
         }
+    })
+}
+export function getHot() {
+    return request({
+        url: '/post/hot',
+        method: 'get',
     })
 }
 

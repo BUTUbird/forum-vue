@@ -5,11 +5,11 @@
     </div>
     <div>
       <ul>
-        <li class="mb-3">社区会员: {{ count.users }} 人</li>
-        <li class="mb-3">在线人数: {{ count.line }} 人</li>
-        <li class="mb-3">主题数: {{ count.posts }} 个</li>
-        <li class="mb-3">标签数: {{ count.tags }} 个</li>
-        <li class="mb-3">回帖数: {{ count.comments }} 条</li>
+        <li class="mb-3">社区会员:<el-tag size="small">{{ count.users }}</el-tag>人</li>
+        <li class="mb-3">在线人数: <el-tag size="small">{{ count.line }}</el-tag> 人</li>
+        <li class="mb-3">主题数: <el-tag size="small">{{ count.posts }} </el-tag>个</li>
+        <li class="mb-3">标签数: <el-tag size="small">{{ count.tags }} </el-tag>个</li>
+        <li class="mb-3">回帖数: <el-tag size="small">{{ count.comments }} </el-tag>条</li>
       </ul>
     </div>
   </el-card>

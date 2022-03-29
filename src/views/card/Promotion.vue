@@ -4,9 +4,9 @@
       <span>推广</span>
     </div>
     <div>
-      <p v-for="(item,index) in list" :key="index" class="block">
+      <el-button type="primary" v-for="(item,index) in list" :key="index" class="block" plain>
         <a :href="item.link" target="_blank">{{item.title}}</a>
-      </p>
+      </el-button>
     </div>
   </el-card>
 </template>

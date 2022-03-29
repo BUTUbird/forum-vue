@@ -7,9 +7,12 @@ import 'nprogress/nprogress.css'
 import {getToken} from "@/utils/auth"; // progress bar style
 
 NProgress.configure({showSpinner: false}) // NProgress Configuration
+//路由白名单列表，把路由添加到这个数组，不用登陆也可以访问
+const whiteList = ['/login','resetPwd','/']
 
 //导航守卫
 router.beforeEach(async (to, from, next) => {
+
     // start progress bar
     NProgress.start()
     next()
@@ -28,13 +31,17 @@ router.beforeEach(async (to, from, next) => {
             await store.dispatch('user/getInfo')
             next()
         }
-    } else if (!to.meta.requireAuth)
-    {
+    } else if (!to.meta.requireAuth){
         next()
+    } else {
+        //路由白名单
+        if (whiteList.indexOf(to.name)!== -1){
+            next()
+        }else {
+            next('/login')
+        }
     }
-    else {
-        next('/login')
-    }
+
 })
 
 router.afterEach(() => {

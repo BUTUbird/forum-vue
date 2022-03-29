@@ -5,26 +5,26 @@
         :fixed-top="true"
     >
       <template slot="brand">
-        <b-navbar-item tag="div">
+        <b-navbar-item tag="router-link" :to="{ path: '/' }">
           <img :src="doubaoImg" alt="logo">
         </b-navbar-item>
 
-        <b-navbar-item
-            class="is-hidden-desktop"
-            tag="router-link"
-            :to="{ path: '/' }"
-        >
-          主页
-        </b-navbar-item>
+<!--        <b-navbar-item-->
+<!--            class="is-hidden-desktop"-->
+<!--            tag="router-link"-->
+<!--            :to="{ path: '/' }"-->
+<!--        >-->
+<!--          主页-->
+<!--        </b-navbar-item>-->
       </template>
-      <template slot="start">
-        <b-navbar-item
-            tag="router-link"
-            :to="{ path: '/' }"
-        >
-          🌐 主页
-        </b-navbar-item>
-      </template>
+<!--      <template slot="start">-->
+<!--        <b-navbar-item-->
+<!--            tag="router-link"-->
+<!--            :to="{ path: '/' }"-->
+<!--        >-->
+<!--          🌐 主页-->
+<!--        </b-navbar-item>-->
+<!--      </template>-->
 
       <template slot="end">
         <b-navbar-item tag="div">
@@ -33,7 +33,7 @@
                 v-model="searchKey"
                 class="s_input"
                 width="80%"
-                placeholder="搜索帖子、标签和用户"
+                placeholder="搜索帖子、标签"
                 rounded
                 clearable
                 @keyup.enter.native="search()"
@@ -43,7 +43,7 @@
               <b-button
                   class="is-info"
                   @click="search()"
-              >检索
+              >搜索
               </b-button>
             </p>
           </b-field>
@@ -97,7 +97,7 @@
           <b-navbar-item
               v-show="user.roleId === 1"
               tag="router-link"
-              :to="{ path: `/admin` }"
+              :to="{ path: `/admin/echar` }"
           >
             ⚙ 后台管理
           </b-navbar-item>

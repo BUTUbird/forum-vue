@@ -9,6 +9,8 @@
       :key="`comment-${comment.id}`"
       :comment="comment"
     />
+
+
   </section>
 </template>
 
@@ -17,7 +19,8 @@ import { mapGetters } from 'vuex'
 import { fetchCommentsByTopicId } from '@/api/comment'
 import LvCommentsForm from './CommentsForm'
 import LvCommentsItem from './CommentsItem'
-
+import Vditor from "vditor";
+import marked from 'marked';
 export default {
   name: 'LvComments',
   components: {
@@ -38,20 +41,28 @@ export default {
   computed: {
     ...mapGetters([
       'token'
-    ])
+    ]),
   },
-  async mounted() {
-    await this.fetchComments(this.slug)
-  },
-  methods: {
-    // 初始化
-    async fetchComments(topic_id) {
-      console.log(topic_id)
-      fetchCommentsByTopicId(topic_id).then(response => {
-        const { data } = response
-        this.comments = data
-      })
+
+    async mounted() {
+      await this.fetchComments(this.slug)
+    },
+    methods: {
+      // 初始化
+      async fetchComments(topic_id) {
+        console.log(topic_id)
+        fetchCommentsByTopicId(topic_id).then(response => {
+          const {data} = response
+          this.comments = data
+
+
+        })
+      },
+      renderMarkdown(md) {
+        Vditor.preview(document.getElementById('content_p'), md, {
+          hljs: {style: 'github'}
+        })
+      },
     }
   }
-}
 </script>

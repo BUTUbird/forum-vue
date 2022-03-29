@@ -93,6 +93,7 @@ export default {
   components: { Author, Recommend, LvComments },
   computed: {
     ...mapGetters([
+
       'token','user'
     ])
   },

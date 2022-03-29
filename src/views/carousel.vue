@@ -1,7 +1,7 @@
 <template>
   <el-carousel indicator-position="outside"  style="width:100%; border-radius: 15px">
     <el-carousel-item v-for="(item,key) in imgArray" :key="key">
-      <img :src="item.idView" class="rightImg">
+      <img :src="item.idView" class="rightImg" style="border-radius: 15px">
     </el-carousel-item>
   </el-carousel>
 </template>

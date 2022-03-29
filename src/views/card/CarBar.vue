@@ -7,7 +7,7 @@
 
       <Promotion></Promotion>
 
-      站点统计
+
       <Count></Count>
     </section>
 
