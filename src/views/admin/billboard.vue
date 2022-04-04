@@ -1,5 +1,6 @@
 <template>
 <div>
+  <el-button type="primary" @click="insert = true">新增</el-button>
   <el-table
     :data=" billboardList"
     style="width: 100%">
@@ -45,12 +46,22 @@
             :limit.sync="page.size"
             @pagination="init"
             />
-
+  <el-dialog title="新增公告" :visible.sync="insert" @close="resetForm">
+    <el-form ref="ruleForm" >
+      <el-form-item label="公告" :label-width="formLabelWidth">
+        <el-input v-model="NoticeText" autocomplete="off"></el-input>
+      </el-form-item>
+    </el-form>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="insert = false">取 消</el-button>
+      <el-button type="primary" @click="onSubmit">确 定</el-button>
+    </div>
+  </el-dialog>
 </div>
 </template>
 
 <script>
-import { getBillboard,deleteOne,disableOne, ableOne } from '@/api/billboard'
+import {getBillboard, deleteOne, disableOne, ableOne, insertOne} from '@/api/billboard'
 import pagination from '@/components/Pagination'
 
 export default {
@@ -58,6 +69,9 @@ export default {
   components: { pagination },
   data() {
     return {
+      formLabelWidth: '120px',
+      NoticeText: '',
+      insert: false,
       billboardList: [],
       page: {
         current: 1,
@@ -117,6 +131,25 @@ export default {
          this.reload()
        })
    },
+    resetForm() {
+      this.$refs['ruleForm'].resetFields();
+    },
+    async onSubmit() {
+      this.insert = false
+      this.isLoading = true
+      insertOne(this.NoticeText).then(() => {
+        this.$message({
+          message: "添加成功",
+          type: "success",
+          duration: 2000,
+        });
+        setTimeout(() => {
+          this.loading = false;
+          this.$router.push({ path: this.redirect || "/admin/billboard" });
+        }, 0.1 * 1000);
+      })
+      this.reload()
+    }
   }
 }
 </script>

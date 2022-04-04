@@ -9,6 +9,7 @@
           <router-link :to="{ path: `/member/${user.username}/home` }" class="_b_div">
             <img :src="user.avatar" class="_b_img">
             {{ user.alias }} <span class="is-size-7 has-text-grey" >{{ '@' + user.username }}</span>
+            <el-tag v-show="user.roleId === 1" size="mini">管理员</el-tag>
           </router-link>
         </p>
         <div class="columns is-mobile">

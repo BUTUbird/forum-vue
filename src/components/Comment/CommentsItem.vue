@@ -5,8 +5,17 @@
     </figure>
     <div class="media-content">
       <div class="content">
-          <strong>{{ comment.username }}</strong>
+        <el-row>
+          <strong>{{ comment.username }}</strong>&nbsp;
+          <el-tag v-show="comment.roleId === 1" size="mini">管理员</el-tag>
           <small class="ml-2">{{ comment.createTime | date }}</small>
+        <a v-show="user.id === comment.userId"  style="float: right">
+              <span
+                  class="tag"
+                  @click="delete_comment(comment.id)"
+              >删除</span>
+        </a>
+        </el-row>
           <br />
         <!--Markdown-->
 <!--        <vue-markdown  :source="comment.content"></vue-markdown>-->
@@ -22,11 +31,13 @@
 import {mapGetters} from "vuex";
 import Vditor from "vditor";
 import VueMarkdown from 'vue-markdown'
+import {delete_comment} from "@/api/comment";
 export default {
   name: 'LvCommentsItem',
   components:{
     VueMarkdown
   },
+  inject: ["reload"],
   props: {
     comment: {
       type: Object,
@@ -51,9 +62,15 @@ export default {
         hljs: {style: 'github'}
       })
     },
-    getContent() {
 
-      console.log()
+    delete_comment(id){
+      delete_comment(id).then(res=>{
+        if (res.code === 200) {
+          this.$message.success('删除成功')
+          this.reload()
+        }
+      })
+
     }
   }
 }

@@ -70,7 +70,35 @@ export default {
         mode: 'sv',
         after: () => {
           this.contentEditor.setValue(md)
-        }
+        },
+        upload:{
+          accept:'image/jpg, image/png',//规定上传格式
+          url: process.env.VUE_APP_SERVER_URL+'/upload', //接口
+          multiple: false,
+          fieldName:'file',
+          max:1024 * 1024,
+          //extraData:{token:'123445'},
+          linkToImgUrl:process.env.VUE_APP_SERVER_URL+'/upload',
+          filename(name) {
+            console.log(name)
+            return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '').replace(
+                /[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '').replace('/\\s/g', '')
+          },
+          format(val,msg){
+            let responseData = JSON.parse(msg)
+            console.log(responseData)
+            return JSON.stringify({
+              msg:'',
+              code: responseData.code,
+              data:{
+                errFiles:[],
+                succMap:{
+                  [responseData.data]:responseData.data
+                }
+              }
+            })
+          }
+        },
       })
     },
     fetchTopic() {

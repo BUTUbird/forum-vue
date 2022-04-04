@@ -116,21 +116,10 @@ const routes = [
         component: () => import ('@/views/admin/billboard'),
         meta: {title: '公告管理'}
       },
-
-      {
-        path:"addBillboard",
-        component: () => import ('@/views/admin/addBillboard'),
-        meta: {title: '添加公告'}
-      },
       {
         path:"carousel",
         component: () => import ('@/views/admin/carousel'),
         meta: {title: '轮播图管理'}
-      },
-      {
-        path:"addCarousel",
-        component: () => import ('@/views/admin/addCarousel'),
-        meta: {title: '添加轮播图'}
       },
       {
         path:"tip",
@@ -138,19 +127,9 @@ const routes = [
         meta: {title: '每日一句管理'}
       },
       {
-        path:"addtip",
-        component: () => import ('@/views/admin/addtip'),
-        meta: {title: '添加每日一句'}
-      },
-      {
         path:"promotion",
         component: () => import ('@/views/admin/promotion'),
         meta: {title: '广告商管理'}
-      },
-      {
-        path:"addpromotion",
-        component: () => import ('@/views/admin/addpromotion'),
-        meta: {title: '添加广告商'}
       },
       {
         path:"user",
@@ -176,6 +155,11 @@ const routes = [
         path:"detail/:id",
         component: () => import ('@/views/admin/detail'),
         meta: {title: '帖子详情'}
+      },
+      {
+        path:"word",
+        component: () => import ('@/views/admin/word'),
+        meta: {title: '敏感词'}
       },
     ],
     meta: {title: '首页'}

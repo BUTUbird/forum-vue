@@ -1,5 +1,6 @@
 <template>
 <div>
+  <el-button type="primary" @click="insert = true">新增</el-button>
   <el-table
     :data=" promotionList"
     style="width: 100%">
@@ -41,11 +42,40 @@
             :limit.sync="page.size"
             @pagination="init"
             />
+  <el-dialog title="新增广告" :visible.sync="insert" @close="resetForm">
+    <el-form ref="ruleForm" >
+      <el-form-item label="广告名" :label-width="formLabelWidth">
+        <el-input
+            placeholder="请输入广告名"
+            v-model="ruleForm.title">
+        </el-input>
+      </el-form-item>
+      <el-form-item label="地址" :label-width="formLabelWidth">
+        <el-input
+            placeholder="请输入广告地址"
+            v-model="ruleForm.link">
+        </el-input>
+      </el-form-item>
+      <el-form-item label="描述" :label-width="formLabelWidth">
+        <el-input
+            type="textarea"
+            :rows="2"
+            placeholder="请输入内容"
+            v-model="ruleForm.description">
+        </el-input>
+      </el-form-item>
+    </el-form>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="insert = false">取 消</el-button>
+      <el-button type="primary" @click="onSubmit">确 定</el-button>
+    </div>
+  </el-dialog>
 </div>
+
 </template>
 
 <script>
-import { getPromotion,deleteOne } from '@/api/promote'
+import {getPromotion, deleteOne, insertOne} from '@/api/promote'
 import pagination from '@/components/Pagination'
 
 export default {
@@ -53,6 +83,13 @@ export default {
   components: { pagination },
   data() {
     return {
+      insert: false,
+      formLabelWidth: '120px',
+      ruleForm: {
+        title: "",
+        link:"",
+        description:"",
+      },
       promotionList: [],
       page: {
         current: 1,
@@ -88,6 +125,24 @@ export default {
         this.reload()
        })
    },
+    async onSubmit() {
+      this.insert = false
+      this.isLoading = true
+      insertOne(this.ruleForm).then(() => {
+        this.$message({
+          message: "添加成功",
+          type: "success",
+          duration: 2000,
+        });
+        setTimeout(() => {
+          this.loading = false;
+          this.$router.push({ path: this.redirect || "/admin/promotion" });
+        }, 0.1 * 1000);
+      })
+    },
+    resetForm() {
+      this.$refs['ruleForm'].resetFields();
+    },
   }
 }
 </script>

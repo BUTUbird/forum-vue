@@ -83,18 +83,18 @@ export default {
         this.commentList = data.records
       })
     },
-   handleDelete(id){
-       deleteOne(id).then((response)=>{
-        const { code, message } = response
-        alert(message)
-        if (code === 200) {
-          setTimeout(() => {
-            this.$router.push({ path: '/admin/comment' })
-          }, 500)
-        }
-        this.reload()
-       })
-   },
+   // handleDelete(id){
+   //     deleteOne(id).then((response)=>{
+   //      const { code, message } = response
+   //      alert(message)
+   //      if (code === 200) {
+   //        setTimeout(() => {
+   //          this.$router.push({ path: '/admin/comment' })
+   //        }, 500)
+   //      }
+   //      this.reload()
+   //     })
+   // },
   }
 }
 </script>

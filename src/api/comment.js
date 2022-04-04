@@ -28,9 +28,9 @@ export function getComment(page, size) {
     }
   })
 }
-export function deleteOne(id) {
+export function delete_comment(id) {
   return request({
-    url: `/comment/deleteOne/${id}`,
+    url: `/comment/delete_comment/${id}`,
     method: 'delete',
   })
 }
