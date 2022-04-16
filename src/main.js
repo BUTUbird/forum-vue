@@ -20,6 +20,8 @@ Vue.use(VueAwesomeSwiper)
 import 'dayjs/locale/zh-cn'
 const dayjs = require('dayjs');
 
+import webSocket from "@/utils/WebSocket";
+Vue.prototype.webSocket = webSocket;
 // import with ES6
 import VueHighlightJS from 'highlight.js';
 Vue.use(VueHighlightJS)

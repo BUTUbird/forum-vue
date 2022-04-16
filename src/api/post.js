@@ -8,6 +8,16 @@ export function getList(pageNo, size, tab) {
         params: { pageNo: pageNo, size: size, tab: tab }
     }))
 }
+
+// 列表
+export function getLike(pageNo, size, id) {
+    return request(({
+        url: '/post/like',
+        method: 'get',
+        params: { pageNo: pageNo, size: size, id: id }
+    }))
+}
+
 // 发布
 export function post(topic) {
     return request({

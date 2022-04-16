@@ -18,6 +18,14 @@ export function pushComment(data) {
   })
 }
 
+export function pushChildComment(data) {
+  return request({
+    url: '/comment/add_child_comment',
+    method: 'post',
+    data: data
+  })
+}
+
 export function getComment(page, size) {
   return request({
     url: '/comment/getAll',

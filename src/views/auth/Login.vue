@@ -34,7 +34,8 @@
               ></el-input>
               </el-col>
               <el-col :span="12">
-                <img width="160px" src="http://localhost:8000/user/verify" Onclick="this.src='http://localhost:8000/user/verify?d='+new Date()*1"/>
+<!--                Onclick="this.src='http://localhost:8000/user/verify?d='+new Date()*1-->
+                <img width="160px" :src="code_url" @click="changeCode"/>
               </el-col>
             </el-form-item>
 
@@ -57,8 +58,9 @@
     </div>
   </div>
 </template>
-
 <script>
+
+import {getVerify} from "@/api/auth/auth";
 
 export default {
   name: "Login",
@@ -96,6 +98,7 @@ export default {
     };
   },
   created() {
+    this.code_url = process.env.VUE_APP_SERVER_URL+'/user/verify'
   },
   methods:{
     submitForm(formName) {
@@ -126,6 +129,10 @@ export default {
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },
+    changeCode(){
+        this.code_url = this.code_url+'?d='+new Date()*1
+    }
+
   }
 }
 </script>

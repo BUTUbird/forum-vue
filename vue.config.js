@@ -21,8 +21,17 @@ module.exports = defineConfig({
           }
         }
 
-      ]
-    }
+      ],
+    },
   },
 
 })
+
+module.exports ={
+  devServer:{
+  //   disableHostCheck:true
+    host:'localhost',
+    historyApiFallback: true,
+    allowedHosts:"all"
+  }
+}

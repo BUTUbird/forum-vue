@@ -9,6 +9,7 @@
           </div>
           <div>
             <p class="content">积分：<code>{{ topicUser.score }}</code></p>
+            <p class="content" @click="fans = true">粉丝：<code>{{ topicUser.followers }}</code></p>
             <p class="content">入驻：{{ dayjs(topicUser.createTime).format("YYYY/MM/DD HH:MM:ss") }}</p>
             <p class="content">简介：{{ topicUser.bio }}</p>
           </div>
@@ -73,6 +74,12 @@
         </el-card>
       </div>
     </div>
+    <el-dialog title="粉丝列表" :visible.sync="fans" append-to-body>
+      <followers></followers>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="fans = false">返回</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -81,12 +88,15 @@ import { getInfoByName } from '@/api/user'
 import pagination from '@/components/Pagination/index'
 import { mapGetters } from 'vuex'
 import { deleteTopic } from '@/api/post'
+import followers from "@/views/user/followers";
+
 
 export default {
   name: 'Profile',
-  components: { pagination },
+  components: { pagination,followers },
   data() {
     return {
+      fans:false,
       topicUser: {},
       topics: {},
       page: {
@@ -111,6 +121,7 @@ export default {
         this.page.size = data.topics.size
         this.page.total = data.topics.total
         this.topics = data.topics.records
+        console.log(this.topicUser)
       })
     },
     handleDelete(id) {

@@ -16,6 +16,7 @@ const mutations = {
     SET_USER_STATE: (state, user) => {
         state.user = user
     },
+
 }
 
 const actions = {
@@ -26,6 +27,7 @@ const actions = {
             login({ username: name.trim(), password: pass, rememberMe: rememberMe,code: code }).then(response => {
                 const { data } = response
                 commit('SET_TOKEN_STATE', data.token)
+                localStorage.setItem('token', data.token)
                 setToken(data.token)
                 resolve()
             }).catch(error => {
@@ -43,10 +45,15 @@ const actions = {
                     commit('SET_TOKEN_STATE', '')
                     commit('SET_USER_STATE', '')
                     removeToken()
+                    localStorage.removeItem('user')
+                    localStorage.removeItem('Msg')
+                    localStorage.removeItem('token')
                     resolve()
                     reject('Verification failed, please Login again.')
                 }
+
                 commit('SET_USER_STATE', data)
+                localStorage.setItem('user', JSON.stringify(data))
                 resolve(data)
             }).catch(error => {
                 reject(error)
@@ -62,6 +69,9 @@ const actions = {
                 commit('SET_TOKEN_STATE', '')
                 commit('SET_USER_STATE', '')
                 removeToken()
+                localStorage.removeItem('user')
+                localStorage.removeItem('Msg')
+                localStorage.removeItem('token')
                 resolve()
             }).catch(error => {
                 reject(error)

@@ -7,25 +7,25 @@ Vue.use(Vuex)
 
 
 
-// export default new Vuex.Store({
-//   state: {
-//   },
-//   getters: {
-//   },
-//   mutations: {
-//   },
-//   actions: {
-//   },
-//   modules: {
-//     user
-//   },
-//
-// })
-const store = new Vuex.Store({
+export default new Vuex.Store({
+  state: {
+    wsData:[],
+    MsgInfo:'',
+  },
+  getters,
+  mutations: {
+    setWebSocket(state,data){
+      state.wsData = data;
+    },
+    SET_MSG_STATE: (state, MsgInfo) => {
+      state.MsgInfo = MsgInfo
+    },
+  },
+  actions: {
+  },
   modules: {
     user
   },
-  getters
+
 })
 
-export default store

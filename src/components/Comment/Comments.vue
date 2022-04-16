@@ -29,6 +29,8 @@ export default {
   },
   data() {
     return {
+        pageNum: 1,
+        pageSize: 10,
       comments: []
     }
   },
@@ -50,12 +52,9 @@ export default {
     methods: {
       // 初始化
       async fetchComments(topic_id) {
-        console.log(topic_id)
         fetchCommentsByTopicId(topic_id).then(response => {
           const {data} = response
           this.comments = data
-
-
         })
       },
       renderMarkdown(md) {

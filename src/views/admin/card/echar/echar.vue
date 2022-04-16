@@ -1,5 +1,19 @@
 <template>
-    <div id="myChart" :style="{ width: '700px', height: '650px' }"></div>
+  <div>
+    <el-col :md="24" :lg="12" :xl="16" class="mb15">
+      <el-card shadow="hover">
+        <div slot="header">
+          <span>热门标签文章数/比例</span>
+        </div>
+        <div>
+
+          <div id="myChart" :style="{ width: '450px', height: '350px' }"></div>
+
+        </div>
+      </el-card>
+    </el-col>
+  </div>
+
 </template>
 
 <script>
@@ -23,10 +37,10 @@ export default {
       console.log(data)
            let myChart = echarts.init(document.getElementById("myChart"));
           var option = {
-              title: {
-                  text: '热门标签文章数/比例',
-                  left: 'center'
-                  },
+              // title: {
+              //     text: '热门标签文章数/比例',
+              //     left: 'center'
+              //     },
               tooltip: {
                   trigger: 'item'
                       },

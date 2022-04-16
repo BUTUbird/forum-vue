@@ -27,4 +27,11 @@ export function update(user) {
   })
 }
 
+export function getFans() {
+  return request({
+    url: '/user/getFans',
+    method: 'get'
+  })
+}
+
 

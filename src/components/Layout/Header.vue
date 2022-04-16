@@ -38,7 +38,6 @@
                 clearable
                 @keyup.enter.native="search()"
             />
-
             <p class="control">
               <b-button
                   class="is-info"
@@ -48,7 +47,11 @@
             </p>
           </b-field>
         </b-navbar-item>
-
+        <b-navbar-item tag="div">
+        <el-badge :value="MsgInfo.length" v-show="MsgInfo.length" class="item">
+          <el-button icon="el-icon-bell" circle @click="msg = true"></el-button>
+        </el-badge>
+        </b-navbar-item>
         <b-navbar-item tag="div">
           <b-switch
               v-model="darkMode"
@@ -97,7 +100,7 @@
           <b-navbar-item
               v-show="user.roleId === 1"
               tag="router-link"
-              :to="{ path: `/admin/echar` }"
+              :to="{ path: `/admin/card` }"
           >
             ⚙ 后台管理
           </b-navbar-item>
@@ -117,25 +120,40 @@
         </b-navbar-dropdown>
       </template>
     </b-navbar>
+    <el-dialog title="通知" :visible.sync="msg" append-to-body>
+      <Message></Message>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="msg = false">返回</el-button>
+      </div>
+    </el-dialog>
   </header>
+
 </template>
 
 <script>
 import { disable as disableDarkMode, enable as enableDarkMode } from 'darkreader'
 import { getDarkMode, setDarkMode } from '@/utils/auth'
 import { mapGetters } from 'vuex'
+import Message from '@/views/auth/Message'
 export default {
   name: 'Header',
+  components: {
+    Message
+  },
   data() {
     return {
       logoUrl: require('@/assets/image/BUTUbird.svg'),
       doubaoImg: require('@/assets/image/BUTUbird.svg'),
       searchKey: '',
-      darkMode: false
+      darkMode: false,
+      userInfo:'',
+      userMsg:[],
+      msg:false
     }
   },
   computed: {
-    ...mapGetters(['token', 'user'])
+    ...mapGetters(['token', 'user','MsgInfo']),
+
   },
   watch: {
     // 监听Theme模式
@@ -146,8 +164,9 @@ export default {
         disableDarkMode()
       }
       setDarkMode(this.darkMode)
-    }
+    },
   },
+
   created() {
     // 获取cookie中的夜间还是白天模式
     this.darkMode = getDarkMode()
@@ -167,7 +186,6 @@ export default {
       })
     },
     search() {
-      console.log(this.token)
       if (this.searchKey.trim() === null || this.searchKey.trim() === '') {
         this.$message.info({
           showClose: true,
@@ -177,7 +195,10 @@ export default {
         return false
       }
       this.$router.push({ path: '/search?key=' + this.searchKey })
-    }
+    },
+  },
+  mounted(){
+    this.userMsg = JSON.parse(localStorage.getItem("Msg"))
   }
 }
 </script>
@@ -187,4 +208,5 @@ input {
   width: 80%;
   height: 86%;
 }
+
 </style>

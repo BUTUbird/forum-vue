@@ -107,8 +107,13 @@ const routes = [
     component: () => import ('@/views/admin/index'),
     children:[
       {
+        path:"card",
+        component: () => import ('@/views/admin/card/index'),
+        meta: {title: '主页'}
+      },
+      {
         path:"echar",
-        component: () => import ('@/views/admin/echar'),
+        component: () => import ('@/views/admin/card/echar/echar'),
         meta: {title: '热门标签文章数'}
       },
       {

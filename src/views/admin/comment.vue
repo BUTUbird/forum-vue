@@ -80,7 +80,6 @@ export default {
         this.page.current = data.current
         this.page.total = data.total
         this.page.size = data.size
-        this.commentList = data.records
       })
     },
    // handleDelete(id){

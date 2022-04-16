@@ -28,3 +28,10 @@ export function deleteOne(id) {
     method: 'delete',
   })
 }
+
+export function getRecommendTags(){
+  return request({
+    url: '/tag/recommendTags',
+    method: 'get',
+  })
+}

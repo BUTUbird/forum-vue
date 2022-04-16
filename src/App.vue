@@ -9,7 +9,7 @@
     </div>
 
     <div>
-      <Footer></Footer>
+<!--      <Footer></Footer>-->
     </div>
   </div>
 </template>
@@ -36,8 +36,30 @@ export default {
       this.$nextTick(function(){
         this.isRouterAlive=true;
       })
+    },
+    init_WebSocket(){
+      //允许连接的数组
+      let path = this.$route.path;
+      let path_list = ["/"]
+      if(path_list.includes(path)){
+        let user = JSON.parse(localStorage.getItem('user'))
+        if (user){
+          this.webSocket.initWebSocket(user.id)
+        }
+      }
     }
   },
+  watch:{
+    $route:{
+      handler(){
+        let token = localStorage.getItem('token');
+        if (token){
+          this.init_WebSocket();
+        }
+      },
+      immediate: true
+    }
+  }
 }
 </script>
 

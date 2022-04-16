@@ -38,3 +38,9 @@ export function getVerify(time) {
         data:time
     })
 }
+export function disableOne(id) {
+    return request({
+        url: `/user/disableOne/${id}`,
+        method: 'get',
+    })
+}
