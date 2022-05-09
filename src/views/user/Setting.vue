@@ -104,9 +104,10 @@ export default {
     }
   },
   created() {
-    this.headers={Authorization :  'Bearer ' + getToken()}
+
     this.fetchInfo()
     this.uploadURL = process.env.VUE_APP_SERVER_URL+'/user/uploadImg/'
+    this.headers={Authorization :  'Bearer ' + getToken()}
 
   },
   methods: {

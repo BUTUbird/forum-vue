@@ -76,7 +76,7 @@ export default {
 ._main{
   background-color: white;
   border: #eee 1px solid;
-  height: 720px;
+  height: 750px;
 }
 .el-aside {
   color: #eee;
